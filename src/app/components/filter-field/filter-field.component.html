@@ -1,1 +1,14 @@
-<p>filter-field works!</p>
+
+<div class="search-container">
+    <input
+      type="text"
+      placeholder="Buscar..."
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="onSearch()"
+      class="search-input"
+    />
+    <button (click)="onSearch()" class="search-button">
+      🔍
+    </button>
+  </div>
+  
