@@ -1,1 +1,16 @@
-<p>mansory works!</p>
+<div class="masonry-grid">
+    @for (item of items; track item) {
+        <div class="masonry-item" [style.gridColumn]="item.gridColumn"
+            [style.gridRow]="item.gridRow">
+            <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
+        </div>
+    }
+</div>
+
+<ng-template #itemTemplate let-item>
+    <!-- Exemplo de conteúdo do item -->
+    <div class="item-content">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+    </div>
+</ng-template>
