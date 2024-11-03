@@ -21,10 +21,10 @@ export class MansoryComponent {
 
   @Input()
   set items(cardItems: CardItem[]) {
-    this._mansoryBlocks = cardItems.map((item, i) => ({
+    this._mansoryBlocks = cardItems.map((item) => ({
       card: item,
-      gridColumn: i % 3 === 0 ? 'span 2' : 'span 1',
-      gridRow: i % 2 === 0 ? 'span 2' : 'span 1'
+      gridColumn: 'span 1',
+      gridRow: Math.random() >= 0.5 ? 'span 2' : 'span 3'
     }))
   }
   
