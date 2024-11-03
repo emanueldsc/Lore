@@ -1,1 +1,5 @@
-<p>card works!</p>
+<div [style.backgroundImage]="'url(' + item.background + ')'" class="card">
+    <a [href]="item.link">
+        <span>{{ item.title }}</span>
+    </a>
+</div>
