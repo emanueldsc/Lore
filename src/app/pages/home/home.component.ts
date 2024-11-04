@@ -4,6 +4,7 @@ import { MansoryComponent } from '../../components/mansory/mansory.component';
 import { MenuComponent } from '../../components/menu/menu.component';
 import { MansoryItem } from 'src/app/models/MansoryItem.model';
 import { CardItem } from 'src/app/models/CardItem.model';
+import { ContentLoaderService } from 'src/app/services/content-loader.service';
 
 @Component({
   selector: 'lore-home',
@@ -11,7 +12,7 @@ import { CardItem } from 'src/app/models/CardItem.model';
   imports: [
     MenuComponent,
     FilterFieldComponent,
-    MansoryComponent
+    MansoryComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.sass'
@@ -19,8 +20,20 @@ import { CardItem } from 'src/app/models/CardItem.model';
 export class HomeComponent implements OnInit {
 
   cards: CardItem[] = []
+  markdownLinks: string[] = []
+  
+  constructor(
+    private contentService: ContentLoaderService
+  ){}
 
   ngOnInit(): void {
+    this.contentService.getMarkdownLinks().subscribe(links => {
+      this.markdownLinks = links
+      links.forEach(link => {
+        this.loadMarkdownContent(link)
+      });
+    })
+
 
     for (let i = 0; i < 25; i++) {
       this.cards.push({
@@ -29,6 +42,11 @@ export class HomeComponent implements OnInit {
         title: `title ${i}`
       })
     }
+  }
+
+  loadMarkdownContent(path: string): void {
+    this.contentService.getMarkdownContent(path).subscribe(content => {
+    })
   }
 
   private monsters = this.getImage()

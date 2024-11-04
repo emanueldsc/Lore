@@ -1,5 +1,5 @@
 <div class="masonry-grid">
-    @for (mansoryBlock of mansoryBlocks; track mansoryBlocks) {
+    @for (mansoryBlock of mansoryBlocks; track $index) {
     <div class="masonry-item" [style.gridColumn]="mansoryBlock.gridColumn" [style.gridRow]="mansoryBlock.gridRow">
         <lore-card [item]="mansoryBlock.card"></lore-card>
     </div>
