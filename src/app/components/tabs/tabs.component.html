@@ -1,0 +1,15 @@
+<div class="tabs">
+    @for (tab of statKeys; track $index) {
+        <button (click)="selectTab(tab)" [class.active]="tab === selectedTab">{{ tab }}</button>
+    }
+</div>
+
+@if (selectedTab) {
+    <div class="tab-content">
+        @for (key of objectKeys(stats[selectedTab]); track $index) {
+            <div>
+                <strong>{{ key }}:</strong> {{ stats[selectedTab][key] }}
+            </div>
+        }
+    </div>
+}

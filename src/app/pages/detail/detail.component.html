@@ -1,5 +1,11 @@
-<pre>
+<div class="back-button-container">
+    <button onclick="history.back()" class="back-button">
+        &#8592;
+    </button>
+</div>
 
-    {{ content | json }}
-
-</pre>
+<div class="creature-page">
+    <lore-carousel [images]="content.images" />
+    <lore-detail [lore]="content.lore" [title]="content.name" />
+    <lore-tabs [stats]="content.stats" />
+</div>

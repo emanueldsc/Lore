@@ -1,4 +1,7 @@
 # Sereia
+![Sereia](../../imgs/sereira_1.jpeg)
+![Sereia](../../imgs/sereira_2.jpeg)
+![Sereia](../../imgs/sereira_3.jpeg)
 
 ---
 

@@ -1,0 +1,17 @@
+<div class="carousel">
+    @if (images[currentIndex]) {
+        <div class="carousel-image-container blur-container">
+          <img 
+              [src]="images[currentIndex]" 
+              alt="Imagem" 
+              class="carousel-image blur-image" 
+              [class.slide-out]="animateOut"
+              [class.slide-in]="animateIn"
+              (animationend)="onAnimationEnd()">
+        </div>
+    }
+    <div class="carousel-controls">
+      <button (click)="prev()">‹</button>
+      <button (click)="next()">›</button>
+    </div>
+  </div>

@@ -17,7 +17,7 @@ import { ContentLoaderService } from 'src/app/services/content-loader.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.sass'
 })
-export class HomeComponent implements OnInit {
+export class HomePageComponent implements OnInit {
 
   cards: CardItem[] = []
   markdownLinks: string[] = []
