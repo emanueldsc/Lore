@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ContentResponse } from '../models/ContentResponse.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class ContentLoaderService {
 
   private http = inject(HttpClient)
 
-  getMarkdownLinks(): Observable<string[]> {
-    return this.http.get<string[]>(this.source);
+  getMarkdownLinks(): Observable<ContentResponse[]> {
+    return this.http.get<ContentResponse[]>(this.source);
   }
 
   getMarkdownContent(path: string): Observable<string> {

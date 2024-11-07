@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CardItem } from 'src/app/models/CardItem.model';
+import { ContentLoaderService } from 'src/app/services/content-loader.service';
 import { FilterFieldComponent } from '../../components/filter-field/filter-field.component';
 import { MansoryComponent } from '../../components/mansory/mansory.component';
 import { MenuComponent } from '../../components/menu/menu.component';
-import { MansoryItem } from 'src/app/models/MansoryItem.model';
-import { CardItem } from 'src/app/models/CardItem.model';
-import { ContentLoaderService } from 'src/app/services/content-loader.service';
 
 @Component({
   selector: 'lore-home',
@@ -20,41 +19,30 @@ import { ContentLoaderService } from 'src/app/services/content-loader.service';
 export class HomePageComponent implements OnInit {
 
   cards: CardItem[] = []
-  markdownLinks: string[] = []
-  
+
   constructor(
     private contentService: ContentLoaderService
-  ){}
+  ) { }
 
   ngOnInit(): void {
-    this.contentService.getMarkdownLinks().subscribe(links => {
-      this.markdownLinks = links
-      links.forEach(link => {
-        this.loadMarkdownContent(link)
-      });
-    })
-
-
-    for (let i = 0; i < 25; i++) {
-      this.cards.push({
-        background: this.monsters.next().value,
-        link: '#',
-        title: `title ${i}`
-      })
-    }
+    this.obterCards()
   }
 
-  loadMarkdownContent(path: string): void {
-    this.contentService.getMarkdownContent(path).subscribe(content => {
+  obterCards(filter?: (item: CardItem) => boolean): void {
+    this.contentService.getMarkdownLinks().subscribe(content => {
+      this.cards = content.map(item => ({
+        background: `${item.dir}/${item.imagens[0]}`,
+        link: item.detail,
+        title: `[${item.type}] - ${item.name}`
+      }))
+      if (filter) {
+        this.cards = this.cards.filter(filter)
+      }
     })
   }
 
-  private monsters = this.getImage()
-  private *getImage(): Generator<string> {
-    const shuffled = this.imagens.sort(() => 0.5 - Math.random())
-    for (const image of shuffled) {
-      yield image
-    }
+  filter(text: string): void {
+    this.obterCards(item => item.title.includes(text))
   }
 
   private imagens = [

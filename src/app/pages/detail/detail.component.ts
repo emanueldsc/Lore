@@ -35,14 +35,14 @@ export class DetailPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activate.params.subscribe(({ content }) => {
-      const path = `assets/content/creatures/${content}.md`
-      this.contentService.getMarkdownContent(path).subscribe(content => {
-        this.content = this.toContent(content)
+      const path = `assets/content/creatures/${content}/${content}.md`
+      this.contentService.getMarkdownContent(path).subscribe(markdown => {
+        this.content = this.toContent(markdown, content)
       })
     })
   }
 
-  toContent(markdown: string): Content {
+  toContent(markdown: string, content: string): Content {
     const sections = markdown.split(/^---$/gm).map((section) => section.trim())
 
     const data: Content = {
@@ -63,7 +63,7 @@ export class DetailPageComponent implements OnInit {
             return match ? match[1].replace('../../', 'assets/') : null
           })
           .filter(url => url) as string[]
-        data.images = imageUrls
+        data.images = imageUrls.map(img => `assets/content/creatures/${content}/${img}`)
       } else if (/Ficha \(D20\)/i.test(lines[0])) {
         data.stats['D20'] = this.parseSectionAsJson(lines.slice(1))
       } else if (/Ficha \(3D&T\)/i.test(lines[0])) {
