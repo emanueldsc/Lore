@@ -1,7 +1,7 @@
 <nav>
     <ul>
         @for (item of menu; track item.label) {
-            <li><lore-card-menu [item]="item"></lore-card-menu></li>
+            <li><lore-card-menu [item]="item" (click)="search.emit(item.label.toLocaleLowerCase())"></lore-card-menu></li>
         }
     </ul>
 </nav>

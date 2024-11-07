@@ -42,7 +42,7 @@ export class HomePageComponent implements OnInit {
   }
 
   filter(text: string): void {
-    this.obterCards(item => item.title.includes(text))
+    this.obterCards(item => item.title.toLocaleLowerCase().includes(text.toLowerCase()))
   }
 
   private imagens = [

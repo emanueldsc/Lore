@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MenuItem } from '../../models/MenuItem.model';
 import { CardMenuComponent } from '../card-menu/card-menu.component';
 
 @Component({
-  selector: 'lore-menu',
+  selector: 'lore-menu[search]',
   standalone: true,
   imports: [
     CardMenuComponent
@@ -12,6 +12,8 @@ import { CardMenuComponent } from '../card-menu/card-menu.component';
   styleUrl: './menu.component.sass'
 })
 export class MenuComponent {
+
+  @Output() search = new EventEmitter<string>();
 
   // esse atributo via ser recebido via parâmetro
   menu: MenuItem[] = [
