@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MenuItem } from '../../models/MenuItem.model';
 import { CardMenuComponent } from '../card-menu/card-menu.component';
+import { TypeCard } from 'src/app/models/TypeCard.enum';
 
 @Component({
   selector: 'lore-menu[search]',
@@ -17,12 +18,12 @@ export class MenuComponent {
 
   // esse atributo via ser recebido via parâmetro
   menu: MenuItem[] = [
-    { label: 'Adventures', background: 'assets/imgs/menu_adventure.jpeg' },
-    { label: 'Characters', background: 'assets/imgs/menu_characters.jpeg' },
-    { label: 'Creatures', background: 'assets/imgs/menu_creatures.jpeg' },
-    { label: 'Items', background: 'assets/imgs/menu_items.jpeg' },
-    { label: 'Lands', background: 'assets/imgs/menu_lands.jpeg' },
-    { label: 'Magics', background: 'assets/imgs/menu_magics.jpeg' }
+    { label: TypeCard['pt'].adventures, background: 'assets/imgs/menu_adventure.jpeg' },
+    { label: TypeCard['pt'].characters, background: 'assets/imgs/menu_characters.jpeg' },
+    { label: TypeCard['pt'].creatures, background: 'assets/imgs/menu_creatures.jpeg' },
+    { label: TypeCard['pt'].items, background: 'assets/imgs/menu_items.jpeg' },
+    { label: TypeCard['pt'].lands, background: 'assets/imgs/menu_lands.jpeg' },
+    { label: TypeCard['pt'].magics, background: 'assets/imgs/menu_magics.jpeg' }
   ]
 
 }

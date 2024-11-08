@@ -4,6 +4,8 @@ import { ContentLoaderService } from 'src/app/services/content-loader.service';
 import { FilterFieldComponent } from '../../components/filter-field/filter-field.component';
 import { MansoryComponent } from '../../components/mansory/mansory.component';
 import { MenuComponent } from '../../components/menu/menu.component';
+import { getTypeCardLabel, TypeCard } from 'src/app/models/TypeCard.enum';
+import { ContentResponse } from 'src/app/models/ContentResponse.model';
 
 @Component({
   selector: 'lore-home',
@@ -33,7 +35,7 @@ export class HomePageComponent implements OnInit {
       this.cards = content.map(item => ({
         background: `${item.dir}/${item.imagens[0]}`,
         link: item.detail,
-        title: `[${item.type}] - ${item.name}`
+        title: this.title(item)
       }))
       if (filter) {
         this.cards = this.cards.filter(filter)
@@ -43,6 +45,11 @@ export class HomePageComponent implements OnInit {
 
   filter(text: string): void {
     this.obterCards(item => item.title.toLocaleLowerCase().includes(text.toLowerCase()))
+  }
+
+  private title(item: ContentResponse) {
+    const typeLabel = getTypeCardLabel('pt', item.type)
+    return `${typeLabel} - ${item.name}`
   }
 
   private imagens = [
