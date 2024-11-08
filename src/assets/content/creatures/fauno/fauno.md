@@ -1,7 +1,9 @@
 # Fauno(a)
-![Fauno](../../imgs/fauno_1.jpeg)
-![Fauno](../../imgs/fauno_2.jpeg)
-![Fauno](../../imgs/fauno_3.jpeg)
+![Fauno](fauno.jpg)
+![Fauno](fauno_2.jpg)
+![Fauno](fauno_3.jpg)
+![Fauno](fauno_4.jpg)
+![Fauno](fauno_5.jpg)
 
 ---
 

@@ -1,7 +1,7 @@
 # Sereia
-![Sereia](sereira.jpeg)
-![Sereia](sereira_2.jpeg)
-![Sereia](sereira_3.jpeg)
+![Sereia](sereira.jpg)
+![Sereia](sereira_2.jpg)
+![Sereia](sereira_3.jpg)
 
 ---
 

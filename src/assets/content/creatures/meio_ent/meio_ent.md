@@ -1,7 +1,6 @@
 # Meio Ent
-![Meio Ent](../../imgs/meio_ent_1.jpeg)
-![Meio Ent](../../imgs/meio_ent_2.jpeg)
-![Meio Ent](../../imgs/meio_ent_3.jpeg)
+![Meio Ent](meio_ent.jpg)
+![Meio Ent](meio_ent_2.jpg)
 
 ---
 
